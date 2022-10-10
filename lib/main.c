@@ -1,33 +1,15 @@
+
+#define WASM_EXPORT(name) __attribute__((export_name(name)))
+#define WASM_IMPORT(name) __attribute__((import_name(name)))
+
 #include <stdio.h>
 
-int main(){
-	printf(">%s--%s():%d\n", __FILE__, __FUNCTION__, __LINE__);
-	return 0;
-}
-void start_frame(){
-	printf(">%s--%s():%d\n", __FILE__, __FUNCTION__, __LINE__);
-}
-void client_connect(){
-	printf(">%s--%s():%d\n", __FILE__, __FUNCTION__, __LINE__);
-}
-void client_disconnect(){
-	printf(">%s--%s():%d\n", __FILE__, __FUNCTION__, __LINE__);
-}
-void client_kill(){
-	printf(">%s--%s():%d\n", __FILE__, __FUNCTION__, __LINE__);
-}
-void put_client_in_server(){
-	printf(">%s--%s():%d\n", __FILE__, __FUNCTION__, __LINE__);
-}
-void set_change_parms(){
-	printf(">%s--%s():%d\n", __FILE__, __FUNCTION__, __LINE__);
-}
-void set_new_parms(){
-	printf(">%s--%s():%d\n", __FILE__, __FUNCTION__, __LINE__);
-}
-void player_post_think(){
-	printf(">%s--%s():%d\n", __FILE__, __FUNCTION__, __LINE__);
-}
-void player_pre_think(){
-	printf(">%s--%s():%d\n", __FILE__, __FUNCTION__, __LINE__);
+WASM_EXPORT("run") void run ();
+
+WASM_IMPORT("hello")
+void hello ();
+
+void run ()
+{
+	hello();
 }

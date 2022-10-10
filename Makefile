@@ -8,7 +8,7 @@ W_C_API_PATH := ../wasmtime
 all: lib/main.wasm bin/main
 
 lib/main.wasm: lib/main.c
-	$(WCC) lib/main.c -o lib/main.wasm
+	$(WCC) lib/main.c -mexec-model=reactor -o lib/main.wasm
 
 wrun: lib/main.wasm
 	wasmtime lib/main.wasm
